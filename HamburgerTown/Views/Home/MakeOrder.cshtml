@@ -1,0 +1,52 @@
+﻿@model HamburgerTown.ViewModels.IndexViewModel
+
+
+<div class="showcase-container">
+
+    <form id="SiparisId" asp-controller="Home" asp-action="MakeOrder" method="post">
+        <div class="mb-3">
+            <label class="form-label">Hamburgers: </label>
+            <select class="form-select" asp-for="Order.Hamburgers.Id">
+                @foreach (var item in Model.HamburgerList)
+                {
+                    <option  value="@item.Id">@(item.HamburgerName + " " + item.Price)</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Beverages: </label>
+            <select class="form-select" asp-for="Order.Beverages.Id">
+                @foreach (var item in Model.BeverageList)
+                {
+                    <option value="@item.Id">@(item.BeverageName + " " + item.Price)</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Count: </label><input type="number" asp-for="@Model.HamburgerCount" />
+        </div>
+        <div class="mb-3">
+            <ul class="list-group">
+                @for (int i = 0; i < @Model.Extras.Count; i++)
+                {
+                    <li class="list-group-item">
+                        <input class="selectedEkstras" type="hidden" asp-for="@Model.Extras[i].Value">
+                        <input class="form-check-input me-1 esktras" type="checkbox" asp-for="@Model.Extras[i].Selected">@Model.Extras[i].Text
+                    </li>
+
+                }
+            </ul>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Size: </label><select class="form-select" asp-for="@Model.SizeId">
+                @foreach (var item in Model.BoyutList)
+                {
+                    <option value=@item.Id>@item.Id-@item.SizeName</option>
+                }
+            </select>
+        </div>
+        <label class="pr-3" id="araToplamId"></label><button type="submit" class="site-btn btn btn-primary">Confirm Order</button>
+    </form>
+</div>
+
+

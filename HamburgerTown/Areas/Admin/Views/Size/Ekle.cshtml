@@ -1,0 +1,25 @@
+﻿@model Size
+
+
+
+<div class="card-header; text-center;">
+    <h2 style="color:darkkhaki; text-align:center">ADMİN SIZE ADDING PAGE</h2>
+</div>
+
+
+
+<div class="card-body">
+    <form asp-area="Admin" asp-controller="Size" asp-action="Ekle" method="post">
+        <div class="form-group">
+            <label asp-for="SizeName">SIZE NAME:</label>
+            <input asp-for="SizeName" type="text" class="form-control" />
+            <span asp-validation-for="SizeName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SizePrice">SIZE PRICE:</label>
+            <input asp-for="SizePrice" type="number" class="form-control" />
+            <span asp-validation-for="SizePrice" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">ADD</button>
+    </form>
+</div>

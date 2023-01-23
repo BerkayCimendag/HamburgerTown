@@ -1,0 +1,43 @@
+﻿@model List<Hamburger>
+
+
+@*Burada hamburgerlerin listesi olacak. Ayrıca ekleme,silme ve güncelleme ile ilgili buttonlar olacak*@
+
+
+
+<div class="card-header; text-center">
+    <h2 style="color:darkkhaki">HAMBURGERLER LİSTESİ SAYFASI</h2>
+</div>
+
+
+
+@if (Model != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ADI</th>
+                <th>FİYAT</th>
+                <th>RESİM</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @*Burada hamburgerlerin içerisinden foreach ile gezip, yazdıracağız*@
+            @foreach (var hamburger in Model)
+            {
+                <tr>
+                    <td>@hamburger.HamburgerName</td>
+                    <td>@hamburger.Price</td>
+                    @* Her bir hamburgerin resmini göstersin (varsa)*@
+                    <td><img height="60px" width="60px" alt="Resim Yok" src="~/img/@hamburger.Picture"></td>
+                    <td class="text-end">
+                        <a class="btn btn-primary" asp-action="ResimKaldir" asp-route-id="@hamburger.Id">Resmini Kaldır</a>
+                        <a class="btn btn-warning" asp-action="Guncelle" asp-route-id="@hamburger.Id">Güncelle</a>
+                        <a class="btn btn-danger" asp-action="Sil" asp-route-id="@hamburger.Id">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

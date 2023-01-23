@@ -1,0 +1,66 @@
+﻿@model List<Order>
+
+
+<div class="container" style="margin-top: 100px;">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="margin-right:20px;">
+                    Hamburger
+                </th>
+                <th style="margin-right:20px;">
+                    Picture
+                </th>
+                <th style="margin-right:20px;">
+                    Beverage
+                </th>
+                <th style="margin-right:20px;">
+                    Extra Supply
+                </th>
+                <th style="margin-right:20px;">
+                    Size
+                </th>
+                <th style="margin-right:20px;">
+                    Order Count
+                </th>
+                <th style="margin-right:20px;">
+                    Total Fee
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @*Buraya sırasıyla bütün ürünler listenecek*@
+            @{
+                
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td style="margin-right:20px;">@item.Hamburgers.HamburgerName</td>
+                            <td style="margin-right:20px; "><img src="~/img/@item.Hamburgers?.Picture" height="60px" width="60px" alt="Alternate Text" /></td>
+                            <td style="margin-right:20px;">@item.Beverages?.BeverageName</td>
+                            <td style="margin-right:20px;">
+                                @{
+                                    var extraSupplies = item.ExtraSupplies;
+                                    for (int i = 0; i < extraSupplies.Count; i++)
+                                    {
+                                        @extraSupplies[i].ExtraSupplyName
+                                        if (i < extraSupplies.Count - 1)
+                                        {
+                                            @(",")
+                                        }
+                                    }
+                                }
+                            </td>
+                            <td>@item.Sizes.SizeName</td>
+                            <td style="margin-right:20px;">@item.Count</td>
+                            <td style="margin-right:20px;">@item.TotalFee</td>
+                            @*Her bir ürünün resmini göstersin(varsa)*@
+
+                        </tr>
+                    
+
+                } }
+        </tbody>
+    </table>
+</div>

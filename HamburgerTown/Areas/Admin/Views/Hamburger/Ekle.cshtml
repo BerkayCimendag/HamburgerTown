@@ -1,0 +1,30 @@
+﻿@using HamburgerTown.ViewModels;
+@model HamburgerViewModel
+
+
+
+<div class="card-header; text-center;">
+    <h2 style="color:darkkhaki; text-align:center">ADMİN HAMBURGER ADDING PAGE</h2>
+</div>
+
+
+
+<div class="card-body">
+    <form asp-area="Admin" asp-controller="Hamburger" asp-action="Ekle" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="HamburgerName">HAMBURGER NAME:</label>
+            <input asp-for="HamburgerName" type="text" class="form-control" />
+            <span asp-validation-for="HamburgerName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HamburgerPrice">HAMBURGER PRICE:</label>
+            <input asp-for="HamburgerPrice" type="number" class="form-control" />
+            <span asp-validation-for="HamburgerPrice" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HamburgerPicture">HAMBURGER PICTURE ADD:</label>
+            <input asp-for="HamburgerPicture" type="file" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Add</button>
+    </form>
+</div>

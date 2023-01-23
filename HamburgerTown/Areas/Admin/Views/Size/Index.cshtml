@@ -1,0 +1,36 @@
+﻿@model List<Size>
+
+
+@*Burada boyutların listesi olacak. Ayrıca ekleme,silme ve güncelleme ile ilgili buttonlar olacak*@
+
+
+
+<div class="card-header; text-center">
+    <h2 style="color:darkkhaki">SIZE LIST PAGE</h2>
+</div>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>PRICE</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*Burada boyutların içerisinden foreach ile gezip, yazdıracağız*@
+        @foreach (var boyut in Model)
+        {
+            <tr>
+                <td>@boyut.SizeName</td>
+                <td>@boyut.SizePrice</td>
+                <td class="text-end">
+                    <a class="btn btn-warning" asp-area="Admin" asp-controller="Size" asp-action="Guncelle" asp-route-id="@boyut.Id">Güncelle</a>
+                    <a class="btn btn-danger" asp-area="Admin" asp-controller="Size" asp-action="Sil" asp-route-id="@boyut.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

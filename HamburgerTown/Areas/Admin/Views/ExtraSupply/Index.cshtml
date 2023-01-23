@@ -1,0 +1,37 @@
+﻿
+@model List<ExtraSupply>
+
+
+@*Burada esktra malzemeleri listesi olacak. Ayrıca ekleme,silme ve güncelleme ile ilgili buttonlar olacak*@
+
+
+
+<div class="card-header; text-center">
+    <h2 style="color:darkkhaki">EXTRA SUPPLY LIST</h2>
+</div>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>PRICE</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*Burada ekstramalzemeler içerisinden foreach ile gezip, yazdıracağız*@
+        @foreach (var icecek in Model)
+        {
+            <tr>
+                <td>@icecek.ExtraSupplyName</td>
+                <td>@icecek.Price</td>
+                <td class="text-end">
+                    <a class="btn btn-warning" asp-area="Admin" asp-controller="ExtraSupply" asp-action="Guncelle" asp-route-id="@icecek.Id">Update</a>
+                    <a class="btn btn-danger" asp-area="Admin" asp-controller="ExtraSupply" asp-action="Sil" asp-route-id="@icecek.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

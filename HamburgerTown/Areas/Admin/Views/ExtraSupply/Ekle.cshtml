@@ -1,0 +1,25 @@
+﻿@model ExtraSupply
+
+
+
+<div class="card-header; text-center;">
+    <h2 style="color:darkkhaki; text-align:center">ADMİN EXTRA SUPPLY ADDING PAGE</h2>
+</div>
+
+
+
+<div class="card-body">
+    <form asp-area="Admin" asp-controller="ExtraSupply" asp-action="Ekle" method="post">
+        <div class="form-group">
+            <label asp-for="ExtraSupplyName">EKSTRA SUPPLY NAME:</label>
+            <input asp-for="ExtraSupplyName" type="text" class="form-control" />
+            <span asp-validation-for="ExtraSupplyName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price">EXTRA SUPPLY PRICE:</label>
+            <input asp-for="Price" type="number" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">ADD</button>
+    </form>
+</div>

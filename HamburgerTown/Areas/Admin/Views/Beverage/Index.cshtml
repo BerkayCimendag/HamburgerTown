@@ -1,0 +1,37 @@
+﻿
+@model List<Beverage>
+
+
+@*Burada iceceklerin listesi olacak. Ayrıca ekleme,silme ve güncelleme ile ilgili buttonlar olacak*@
+
+
+
+<div class="card-header; text-center">
+    <h2 style="color:darkkhaki">BEVERAGE LIST PAGE</h2>
+</div>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>PRICE</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*Burada iceceklerin içerisinden foreach ile gezip, yazdıracağız*@
+        @foreach (var icecek in Model)
+        {
+            <tr>
+                <td>@icecek.BeverageName</td>
+                <td>@icecek.Price</td>
+                <td class="text-end">
+                    <a class="btn btn-warning" asp-area="Admin" asp-controller="Beverage" asp-action="Guncelle" asp-route-id="@icecek.Id">UPDATE</a>
+                    <a class="btn btn-danger" asp-area="Admin" asp-controller="Beverage" asp-action="Sil" asp-route-id="@icecek.Id">DELETE</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
